@@ -1,0 +1,49 @@
+name: Alhadath 24 Auto Update
+
+on:
+  schedule:
+    # التحديث كل 30 دقيقة بدقة عالية
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # يسمح لك بتشغيل التحديث يدوياً عند الحاجة
+
+permissions:
+  contents: write
+
+jobs:
+  update_engine:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4 # الترقية إلى v4 لسرعة أكبر وأمان أكثر
+
+      - name: 🐍 Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' # استخدام أحدث نسخة مستقرة لضمان عمل كود الـ match-case
+          cache: 'pip' # تفعيل التخزين المؤقت للمكتبات لتسريع العمليات القادمة
+
+      - name: 📦 Install High-Performance Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx beautifulsoup4 lxml # إضافة httpx المطلوبة للكود المطور
+
+      - name: ⚙️ Run X-Void Scraper Engine
+        run: python scraper.py
+        env:
+          # يمكن إضافة متغيرات بيئة هنا إذا احتجت لتشفير روابط أو مفاتيح
+          PYTHONUNBUFFERED: "1"
+
+      - name: 📤 Deploy Updates to Repository
+        run: |
+          git config --global user.name "Alhadath24-Bot"
+          git config --global user.email "bot@alhadath24.com"
+          
+          # التحقق من وجود تغييرات حقيقية قبل المحاولة لتجنب الأخطاء
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add index.html
+            git commit -m "⚡ Auto-Sync: $(date +'%Y-%m-%d %H:%M') [System Update]"
+            git push
+          else
+            echo "No changes detected. Skipping commit."
+          fi
