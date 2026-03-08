@@ -3,60 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VISTA PRIME | التغطية الحية</title>
+    <title>VISTA PRIME | الجزيرة</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffcf4b; --bg: #030508; --glass: rgba(255, 255, 255, 0.05); }
-        
-        body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow-x: hidden; }
-        
-        /* شريط الأخبار العاجلة */
-        .ticker-wrap {
-            background: rgba(255, 207, 75, 0.1); border-bottom: 1px solid var(--gold);
-            overflow: hidden; white-space: nowrap; padding: 10px 0; position: sticky; top: 70px; z-index: 999; backdrop-filter: blur(10px);
-        }
-        .ticker { display: inline-block; animation: ticker 60s linear infinite; color: var(--gold); font-weight: bold; font-size: 14px; }
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
-        header { 
-            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); 
-            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--glass); position: sticky; top: 0; z-index: 1000; 
-        }
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 24px; font-weight: 900; color: #fff; text-decoration: none; }
+        :root { --gold: #ffcf4b; --glass: rgba(255, 255, 255, 0.05); --bg: #030508; }
+        body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; min-height: 100vh; }
+        header { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(20px); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; color: #fff; text-decoration: none; }
         .logo span { color: var(--gold); }
-
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
-        .n-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.4s; }
-        .n-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .n-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.4s ease; backdrop-filter: blur(10px); }
+        .n-card:hover { transform: translateY(-8px); border-color: var(--gold); }
         .n-card a { text-decoration: none; color: inherit; }
-        .n-img { height: 200px; position: relative; }
+        .n-img { position: relative; height: 200px; overflow: hidden; background: #111; }
         .n-img img { width: 100%; height: 100%; object-fit: cover; }
-        .n-badge { position: absolute; top: 10px; left: 10px; background: var(--gold); color: #000; padding: 3px 10px; border-radius: 5px; font-size: 10px; font-weight: 900; }
+        .n-badge { position: absolute; top: 15px; left: 15px; background: var(--gold); color: #000; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 50px; }
         .n-info { padding: 20px; }
-        .n-info h3 { font-size: 16px; height: 50px; overflow: hidden; margin: 0 0 15px; }
-        .n-footer { display: flex; justify-content: space-between; font-size: 12px; opacity: 0.6; border-top: 1px solid var(--glass); padding-top: 10px; }
-
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass); margin-top: 50px; }
+        .n-info h3 { font-size: 17px; margin: 0 0 15px 0; line-height: 1.6; font-weight: 700; height: 55px; overflow: hidden; }
+        .n-footer { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5); border-top: 1px solid var(--glass); padding-top: 15px; }
+        .n-more { color: var(--gold); font-weight: 900; }
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid var(--glass); margin-top: 80px; }
+        @media (max-width: 768px) { .news-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <header>
         <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" class="logo">VISTA<span>PRIME</span></a>
-        <div style="font-size: 10px; color: var(--gold); border: 1px solid var(--gold); padding: 2px 10px; border-radius: 4px;">SYSTEM LIVE</div>
+        <div style="color: var(--gold); font-size: 11px;">● LIVE FEED</div>
     </header>
-
-    <div class="ticker-wrap">
-        <div class="ticker">خبر عاجل: </div>
-    </div>
-
     <div class="container">
-        <div class="news-grid"></div>
+        <div class="news-grid">
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>66 سفينة تعبر مضيق هرمز خلال 8 أيام من الحرب بينها 15 سفينة إيرانية</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>هل ترفع طهران الراية البيضاء بعد استهداف مستودعات الوقود؟.. جدل على المنصات</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>ريال مدريد يتراجع عن اهتمامه بضم نجم مانشستر سيتي وهذه الأسباب</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>ملك البحرين يدين اعتداءات إيران ويتمسك بنهج السلام والتضامن الخليجي</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>غينيا تحل 40 حزبا سياسيا قبل الانتخابات المقبلة</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>فيضانات تودي بحياة 23 شخصا وتشل العاصمة الكينية</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>غانا تناشد الأمم المتحدة ضمان أمن جنودها في لبنان</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>صحف بريطانية: ستارمر بين ترمب والشرق الأوسط وقبرص</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>كيف يهدد قصف منشآت النفط الإيرانية إمدادات الطاقة العالمية؟</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>بين الرمزية والواقع.. هل تحتاج المرأة إلى "يوم عالمي" أصلا؟</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>برينس أوف ويلز حاملة الطائرات البريطانية العملاقة</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>أسرى من قوات دلتا.. ما حقيقة خسائر أمريكا وإسرائيل؟</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>الصادات الأربع.. كيف يبني رمضان الإنسان من الداخل؟</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>بالفيديو.. السعودي سعود عبد الحميد يسجل أول أهدافه بالدوري الفرنسي</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>الاستغناء بالله أعلى درجات الحرية.. كيف يمكن الوصول إليه؟</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="n-card">
+                <a href="https://data527.click/21330bf1d025d41336e6/57154ac610/?placementName=default" target="_blank">
+                    <div class="n-img">
+                        <img src="https://www.aljazeera.net/wp-content/uploads/2023/10/Placeholder-Image.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/030508/ffcf4b?text=VISTA+NEWS'">
+                        <div class="n-badge">ULTRA</div>
+                    </div>
+                    <div class="n-info">
+                        <h3>لماذا تأخر الإعلان عن خليفة خامنئي؟.. المنصات تتساءل</h3>
+                        <div class="n-footer">
+                            <span>🕒 19:28</span>
+                            <span class="n-more">إقرأ الآن</span>
+                        </div>
+                    </div>
+                </a>
+            </div></div>
     </div>
-
     <footer>
-        <div class="logo">VISTA<span>2026</span></div>
+        <div class="logo">VISTA <span>PRIME</span></div>
     </footer>
 </body>
 </html>
